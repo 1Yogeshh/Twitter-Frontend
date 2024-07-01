@@ -4,13 +4,14 @@ import Rightside from '../Rightsidebar/Rightside'
 import { useSelector } from 'react-redux';
 import useGetProfile from '../../hooks/useGetProfile';
 import useOtherUsers from '../../hooks/useOtherUsers';
+import { useParams } from 'react-router-dom';
 
 
-const Profile=()=> {
+const Otherprofile=()=> {
 
   const {user, profile, otherUsers}=useSelector(store=>store.user);
-  
-  useGetProfile(user?._id);
+  const {id} =useParams();
+  useGetProfile(id);
   
   useOtherUsers(user?._id);
 
@@ -47,9 +48,8 @@ const Profile=()=> {
             </div>
         </div>
       </div>
-      <Rightside otherUsers={otherUsers}/>
     </div>
   )
 }
 
-export default Profile
+export default Otherprofile

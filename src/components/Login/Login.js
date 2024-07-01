@@ -1,14 +1,70 @@
+import axios from 'axios';
 import React,{useState} from 'react'
+import { USER_API_END_POINT } from '../../utils/constant';
+import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { getUser } from '../../redux/userSlice';
 
 function Login() {
+  const navigate=useNavigate();
 
     const [isLogin, setIsLogin] = useState(true);
     const [name, setName]= useState("");
     const [username, setUsername]= useState("");
     const [email, setEmail]= useState("");
     const [password, setPassword]= useState("");
+    const dispatch=useDispatch();
 
-    const submitHandler=()=>{
+    const submitHandler= async(e)=>{
+      e.preventDefault();
+      if(isLogin){
+        //login
+        try {
+          const response = await axios.post(`${USER_API_END_POINT}/api/login`,{ email, password},{
+            headers:{
+              'Content-Type':"application/json"
+            },
+            withCredentials:true
+          });
+          dispatch(getUser(response?.data?.user));
+        if(response.data.success){
+          navigate("/");
+          toast.success(response.data.message);
+        }
+      } catch (error) {
+        toast.success(error.response.data.message);
+        console.log(error);
+      }
+    }else{
+        //signup
+        try {
+          const response = await axios.post(`${USER_API_END_POINT}/api/register`, {
+              name,
+              username,
+              email,
+              password
+            },{
+              method:'POST',
+              headers:{
+                'Content-Type':"application/json"
+              },
+              withCredentials:true
+            })
+            .then((response) => {
+              if (response.data.success) {
+                setIsLogin(true);
+                toast.success(response.data.message);
+                console.log(response.data)
+              } else {
+                toast.error(response.data.message);
+              }
+            });
+        } catch (error) {
+          console.log(error.response.data);
+          toast.error("somthing went wrong");
+        }
+      }
         
     }
 

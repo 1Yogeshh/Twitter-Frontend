@@ -1,6 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-function Rightside() {
+const Rightside=({otherUsers})=> {
+
+ 
   return (
     <div>
       <div>
@@ -10,15 +13,25 @@ function Rightside() {
       
             <div>
                 <h1>Who to Follow</h1>
-                <div className='flex'>
+
+                {
+                  otherUsers?.map((user)=>{
+                    return(
+                      <div className='flex' key={user?._id}>
                 <div className=''>
-                    <h1>Yash</h1>
-                    <p>@yogeshkumar</p>
+                    <h1>{user?.name}</h1>
+                    <p>@{user?.username}</p>
                 </div>
                 <div>
-                    <button className='bg-gray-500'>Follow</button>
+                <Link to={`/otherprofile/${user?._id}`}>
+                    <button className='bg-gray-500'>Profile</button>
+                </Link>
                 </div>
                 </div>
+                    )
+                  })
+                }
+                
             </div>
     </div>
   )

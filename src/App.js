@@ -4,6 +4,10 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from './components/Home/Home';
 import Profile from './components/Profile/Profile';
 import Login from "./components/Login/Login" 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Otherprofile from './components/Otherprofile/Otherprofile';
+
 
 function App() {
   const router = createBrowserRouter([
@@ -19,12 +23,17 @@ function App() {
     {
       path:"/login",
       element:<Login/>
+    },
+    {
+      path:"/otherprofile/:id",
+      element:<Otherprofile/>
     }
   ]);
   
   return (
     <>
     <RouterProvider router={router} />
+    <ToastContainer />
     </>
   );
 }

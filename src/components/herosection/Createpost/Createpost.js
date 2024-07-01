@@ -1,6 +1,32 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useState } from 'react'
+import { USER_API_END_POINT } from '../../../utils/constant';
+import { toast } from 'react-toastify';
+import { useDispatch, useSelector } from 'react-redux';
+import { getRefresh } from '../../../redux/tweetSlice';
 
 function Createpost() {
+    const [discription,setDiscription]= useState("");
+    const {user} =useSelector(store=>store.user);
+    const dispatch=useDispatch();
+
+    const submitHandler= async ()=>{
+        try {
+            const res = await axios.post(`${USER_API_END_POINT}/tweet/create`,{discription, id:user?._id},{
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                withCredentials:true
+            })
+            dispatch(getRefresh());
+            if(res.data.success){
+                toast.success("Tweet created Successfully")
+            }
+        } catch (error) {
+         console.log(error);   
+        }
+        setDiscription("")
+    }
   return (
     <>
         <div className='w-[60%]'>
@@ -17,12 +43,12 @@ function Createpost() {
                     <div className='flex items-center p-4'>
                         <div>
                         </div>
-                        <input className='w-full outline-none border-none text-xl ml-2' type="text" placeholder='What is happening?!' />
+                        <input value={discription} onChange={(e)=>setDiscription(e.target.value)} className='w-full outline-none border-none text-xl ml-2' type="text" placeholder='What is happening?!' />
                     </div>
                     <div className='flex items-center justify-between p-4 border-b border-gray-300'>
                         <div>
+                        <button onClick={submitHandler} className='bg-blue-500 pl-5 pr-5 pt-1 pb-1 text-white rounded text-xl'>Post</button>
                         </div>
-                        <button  className='bg-[#1D9BF0] px-4 py-1 text-lg text-white text-right border-none rounded-full '>Post</button>
                     </div>
                 </div>
             </div>
