@@ -7,21 +7,38 @@ import { getAllTweets } from "../redux/tweetSlice";
 
 const useGetAllTweet =  (id) => {
     const dispatch=useDispatch();
-    const {refresh}= useSelector(store=>store.tweet);
-    useEffect(()=>{
-        const fetchAllTweets = async () => {
-            try {
-                const res= await axios.get(`${USER_API_END_POINT}/tweet/alltweet/${id}`, {
-                    withCredentials:true
-                });
-                console.log(res);
-                dispatch(getAllTweets(res.data.tweets));
-            } catch (error) {
-                console.log(error);
-            } 
+    const {refresh, isActive}= useSelector(store=>store.tweet);
+
+    const fetchAllTweets = async () => {
+        try {
+            const res= await axios.get(`${USER_API_END_POINT}/tweet/alltweet/${id}`, {
+                withCredentials:true
+            });
+            dispatch(getAllTweets(res.data.tweets));
+        } catch (error) {
+            console.log(error);
+        } 
+    }
+
+    const followingTweetHandler=async()=>{
+        try {
+            axios.defaults.withCredentials=true;
+            const res = await axios.get(`${USER_API_END_POINT}/tweet/followingtweet/${id}`);
+            
+            dispatch(getAllTweets(res.data.tweets));
+        } catch (error) {
+         console.log(error);   
         }
-       fetchAllTweets() ;
-    },[refresh]);
+    }
+
+
+    useEffect(()=>{
+        if(isActive){
+            fetchAllTweets() ;
+        }else{
+            followingTweetHandler();
+        }
+    },[isActive, refresh]);
     
 
 };

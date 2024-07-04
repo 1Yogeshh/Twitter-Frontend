@@ -3,12 +3,14 @@ import React, { useState } from 'react'
 import { USER_API_END_POINT } from '../../../utils/constant';
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
-import { getRefresh } from '../../../redux/tweetSlice';
+import { getIsActive, getRefresh } from '../../../redux/tweetSlice';
+import { getAllTweets } from '../../../redux/tweetSlice';
 
 function Createpost() {
     const [discription,setDiscription]= useState("");
     const {user} =useSelector(store=>store.user);
     const dispatch=useDispatch();
+    const {isActive}= useSelector(store=>store.tweet)
 
     const submitHandler= async ()=>{
         try {
@@ -27,15 +29,25 @@ function Createpost() {
         }
         setDiscription("")
     }
+
+    const forYouHandler=()=>{
+        dispatch(getIsActive(true));
+    }
+
+    const followingHandler=()=>{
+        dispatch(getIsActive(false));
+    }
+    
+
   return (
     <>
         <div className='w-[60%]'>
             <div>
                 <div className='flex items-center justify-evenly border-b border-gray-200'>
-                    <div  className={` "border-b-4 border-blue-600" : "border-b-4 border-transparent"} cursor-pointer hover:bg-gray-200 w-full text-center px-4 py-3`}>
+                    <div onClick={forYouHandler}   className={`${isActive ? "border-b-4 border-blue-600" : "border-b-4 border-transparent"} cursor-pointer hover:bg-gray-200 w-full text-center px-4 py-3`}>
                         <h1 className='font-semibold text-gray-600 text-lg'>For you</h1>
                     </div>
-                    <div  className={` "border-b-4 border-blue-600" : "border-b-4 border-transparent"} cursor-pointer hover:bg-gray-200 w-full text-center px-4 py-3`}>
+                    <div onClick={followingHandler}  className={`${!isActive ? "border-b-4 border-blue-600" : "border-b-4 border-transparent"} cursor-pointer hover:bg-gray-200 w-full text-center px-4 py-3`} >
                         <h1 className='font-semibold text-gray-600 text-lg'>Following</h1>
                     </div>
                 </div>
