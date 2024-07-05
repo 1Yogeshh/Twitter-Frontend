@@ -38,34 +38,31 @@ const Tweet=({tweet})=> {
 
 
   return (
-    <div>
+    <div className='border-gray-500 border-2 mt-2 rounded w-[680px] ml-[342px] mb-5'>
         <div>
             <div>
-                <div className='flex gap-5'>
-                    <h1>{tweet?.userDetails[0]?.name}</h1>
-                    <p>{tweet?.userDetails[0]?.username}   .1m</p>
+                <div className='flex gap-5 ml-4'>
+                    <div className='absolute mt-5 ml-5   rounded-full '>
+                        <img className='h-10 rounded-full mr-2' src="https://pbs.twimg.com/profile_images/1703261403237502976/W0SFbJVS_400x400.jpg" size="120" round={true} />
+                    </div>
+                    <div className='ml-1 mt-1'>
+                    <h1 className='ml-16 mt-3 font-medium text-white'>{tweet?.userDetails[0]?.name}</h1>
+                    <p className='ml-16 text-sm font-medium text-white'>{tweet?.userDetails[0]?.username}   <span className='text-gray-400'>.1m</span></p>
+                    </div>
                 </div>
-                <div>
-                    <p>{tweet?.discription}</p>
+                <div className='ml-20 mt-5 mr-4'>
+                    <p className='text-white'>{tweet?.discription}</p>
                 </div>
 
-                <div className='flex gap-10'>
-                    <div className='flex gap-5'>
-                        <div onClick={()=>likeorDislikeHandler(tweet?._id)} className='hover:bg-blue-200 hover:p-1 hover:rounded'><Heart color='black'/></div>
-                        <p>{tweet?.like?.length}</p>
-                    </div>
-                    <div className='flex gap-5'>
-                        <div><p>Comment</p></div>
-                        <p>0</p>
-                    </div>
-                    <div className='flex gap-5'>
-                        <div><p>Save</p></div>
-                        <p>0</p>
+                <div className='flex gap-10 ml-20 mt-5 mb-3'>
+                    <div className='flex gap-3'>
+                        <div onClick={()=>likeorDislikeHandler(tweet?._id)} className='hover:cursor-pointer hover:text-red-500'><Heart color='Red'/></div>
+                        <p className='text-white'>{tweet?.like?.length}</p>
                     </div>
                     {
                         user?._id===tweet?.userId &&(
-                        <div className='flex gap-5'>
-                            <div  className='hover:bg-blue-200 hover:p-1 hover:rounded hover:cursor-pointer' onClick={()=>deleteTweetHandler(tweet?._id)}><Trash2 /></div>
+                        <div className='flex gap-5 ml-96'>
+                            <div  className='  hover:cursor-pointer' onClick={()=>deleteTweetHandler(tweet?._id)}><Trash2 color='white' /></div>
                         </div>
                         )
                     }

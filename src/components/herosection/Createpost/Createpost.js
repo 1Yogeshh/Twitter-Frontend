@@ -41,26 +41,29 @@ function Createpost() {
 
   return (
     <>
-        <div className='w-[60%]'>
+        <div className='w-[65%] ml-[342px]'>
             <div>
-                <div className='flex items-center justify-evenly border-b border-gray-200'>
-                    <div onClick={forYouHandler}   className={`${isActive ? "border-b-4 border-blue-600" : "border-b-4 border-transparent"} cursor-pointer hover:bg-gray-200 w-full text-center px-4 py-3`}>
-                        <h1 className='font-semibold text-gray-600 text-lg'>For you</h1>
+                <div className='flex items-center justify-evenly border-b border-gray-200 w-full mt-5'>
+                    <div onClick={forYouHandler}   className={`${isActive ? "border-b-4 border-blue-600" : "border-b-4 border-transparent"} cursor-pointer hover:bg-gray-500 hover:rounded w-full text-center  px-4 py-3`}>
+                        <h1 className='font-semibold text-white text-lg'>For you</h1>
                     </div>
-                    <div onClick={followingHandler}  className={`${!isActive ? "border-b-4 border-blue-600" : "border-b-4 border-transparent"} cursor-pointer hover:bg-gray-200 w-full text-center px-4 py-3`} >
-                        <h1 className='font-semibold text-gray-600 text-lg'>Following</h1>
+                    <div onClick={followingHandler}  className={`${!isActive ? "border-b-4 border-blue-600" : "border-b-4 border-transparent"} cursor-pointer hover:bg-gray-500 hover:rounded w-full text-center px-4 py-3`} >
+                        <h1 className='font-semibold text-white text-lg'>Following</h1>
                     </div>
                 </div>
                 <div >
-                    <div className='flex items-center p-4'>
-                        <div>
-                        </div>
-                        <input value={discription} onChange={(e)=>setDiscription(e.target.value)} className='w-full outline-none border-none text-xl ml-2' type="text" placeholder='What is happening?!' />
+                    <div className='flex'>
+                    <div className='absolute mt-3 ml-5  rounded-full '>
+                        <img className='h-12 rounded-full' src="https://pbs.twimg.com/profile_images/1703261403237502976/W0SFbJVS_400x400.jpg" size="120" round={true} />
                     </div>
-                    <div className='flex items-center justify-between p-4 border-b border-gray-300'>
-                        <div>
-                        <button onClick={submitHandler} className='bg-blue-500 pl-5 pr-5 pt-1 pb-1 text-white rounded text-xl'>Post</button>
-                        </div>
+                    <div className='ml-14'>
+                    <div className='flex items-center p-4'>                    
+                        <input value={discription} onChange={(e)=>setDiscription(e.target.value)} className='bg-black text-white w-full outline-none border-none ml-2 font-medium' type="text" placeholder='What is happening?!' />
+                    </div>
+                    <div className='flex items-center justify-between p-4 '>
+                        <button onClick={submitHandler} className='bg-blue-500 pl-5 pr-5 pt-1 pb-1 text-white rounded font-bold ml-[540px]'>Post</button>    
+                    </div>
+                    </div>
                     </div>
                 </div>
             </div>

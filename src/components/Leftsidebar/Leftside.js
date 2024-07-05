@@ -5,6 +5,11 @@ import { USER_API_END_POINT } from '../../utils/constant'
 import { toast } from 'react-toastify'
 import { useDispatch } from 'react-redux'
 import { getMyProfile, getOtherUsers, getUser } from '../../redux/userSlice'
+import { House } from 'lucide-react'
+import { ListCollapse } from 'lucide-react';
+import { Aperture } from 'lucide-react';
+import { LogOut } from 'lucide-react';
+import { Twitter } from 'lucide-react';
 
 function Leftside() {
     const navigate=useNavigate()
@@ -23,24 +28,30 @@ function Leftside() {
         }
     }
   return (
-    <div className='mt-20 ml-20'>
-        <div className='mt-10'>
-        <button onClick={()=>navigate('/')}>Home</button>
+    <div className=' ml-10 border-r-2 w-[20%] border-gray-400 h-[800px] fixed '>
+
+        <div className=' mt-5 flex ml-5 hover:cursor-pointer'>
+        <Twitter size={40} color='white' />
         </div>
-        <div className='mt-10'>
-            <p>Explore</p>
+        <div className='mt-10 hover:cursor-pointer'>
+        <button className='flex gap-2 font-medium text-white' onClick={()=>navigate('/')}> <House color="white" size="30" />Home</button>
         </div>
-        <div className='mt-10'>
-            <button onClick={()=>navigate('/profile')}>profile</button>
+        <div className='mt-10 flex hover:cursor-pointer'>
+        <Aperture size={30}  color='white'/>
+            <p className='ml-2 font-medium text-white'>Explore</p>
         </div>
-        <div className='mt-10'>
-            <p>More</p>
+        <div className='mt-10 flex hover:cursor-pointer'>
+            <div className='absolute   rounded-full '>
+                <img className='h-8 rounded-full mr-2' src="https://pbs.twimg.com/profile_images/1703261403237502976/W0SFbJVS_400x400.jpg" size="120" round={true} />
+            </div>
+            <button className='ml-10 font-medium text-white' onClick={()=>navigate('/profile')}>profile</button>
         </div>
-        <div className='mt-10'>
-            <button>Post</button>
+        <div className=' flex mt-80 hover:cursor-pointer'>
+        <ListCollapse size={30} color='white' /><p className='ml-2 font-medium text-white'>More</p>
         </div>
-        <div className='mt-10' onClick={logoutHandler}>
-            <button>Logout</button>
+        <div className='mt-10 flex hover:cursor-pointer' onClick={logoutHandler}>
+        <LogOut size={30} color='white' />
+            <button className='ml-2 font-medium text-white'>Logout</button>
         </div>
     </div>
   )

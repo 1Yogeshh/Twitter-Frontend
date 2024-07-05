@@ -9,7 +9,7 @@ const Hero=()=> {
 
   return (
     <>
-      <div className=' w-[100%] ml-60'>
+      <div className=' w-[70%] ml-10 border-r-2 border-gray-400 pr-5'>
       <Createpost/>
       {
         tweets?.map((tweet) => <Tweet key={tweet?._id} tweet={tweet}/>)

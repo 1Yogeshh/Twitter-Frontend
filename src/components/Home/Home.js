@@ -21,7 +21,7 @@ const Home = () => {
 
   
   return (
-    <div className='flex justify-between'>
+    <div className='flex bg-black justify-between w-[100%] h-screen'>
     <Leftside/>
     <Hero/>
     <Rightside otherUsers={otherUsers}/>

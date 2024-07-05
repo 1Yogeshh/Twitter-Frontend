@@ -7,6 +7,7 @@ import Login from "./components/Login/Login"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Otherprofile from './components/Otherprofile/Otherprofile';
+import UpdateProfile from './components/Profile/updateprofile';
 
 
 function App() {
@@ -27,6 +28,10 @@ function App() {
     {
       path:"/otherprofile/:id",
       element:<Otherprofile/>
+    },
+    {
+      path:"/update",
+      element:<UpdateProfile/>
     }
   ]);
   

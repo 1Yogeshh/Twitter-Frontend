@@ -5,32 +5,38 @@ const Rightside=({otherUsers})=> {
 
  
   return (
-    <div>
+    <div className='ml-5'>
       <div>
-        <input type='text' className='border-black outline-none bg-gray-300 h-8 rounded-full pl-5 mt-5 mr-10 w-96'></input>
+        <input type='text' className='border-black outline-none bg-white pt-1 pb-1 h-8 rounded  pl-5 mt-5 mr-10 w-96' placeholder='Search'></input>
       </div>
 
       
-            <div>
-                <h1>Who to Follow</h1>
+            <div className='mt-3'>
+                <h1 className=' font-medium text-white mb-3'>Who to Follow</h1>
 
                 {
                   otherUsers?.map((user)=>{
-                    return(
-                      <div className='flex' key={user?._id}>
-                <div className=''>
-                    <h1>{user?.name}</h1>
-                    <p>@{user?.username}</p>
+                  return(
+                  <div className='border-2 border-gray-400 rounded mb-2 w-[350px] h-20'>
+                  <div className='flex' key={user?._id}>
+                  <div className='absolute mt-4 ml-5  rounded-full  '>
+                        <img className='h-10 rounded-full' src="https://pbs.twimg.com/profile_images/1703261403237502976/W0SFbJVS_400x400.jpg" size="120" round={true} />
+                    </div>
+                  <div className='ml-16 w-[150px] mt-3'>
+                    <h1 className='text-white font-bold'>{user?.name}</h1>
+                    <p className='text-white'>@{user?.username}</p>
                 </div>
                 <div>
                 <Link to={`/otherprofile/${user?._id}`}>
-                    <button className='bg-gray-500'>Profile</button>
+                    <button className='bg-blue-500 ml-8 pt-1 pb-1 pl-3 pr-3 rounded mt-4 text-white'>Profile</button>
                 </Link>
                 </div>
                 </div>
+                  </div>
                     )
                   })
                 }
+                
                 
             </div>
     </div>
