@@ -20,7 +20,7 @@ const Rightside=({otherUsers})=> {
                   <div className='border-2 border-gray-400 rounded mb-2 w-[350px] h-20'>
                   <div className='flex' key={user?._id}>
                   <div className='absolute mt-4 ml-5  rounded-full  '>
-                        <img className='h-10 rounded-full' src="https://pbs.twimg.com/profile_images/1703261403237502976/W0SFbJVS_400x400.jpg" size="120" round={true} />
+                        <img className='h-10 w-10 rounded-full' src={user?.image} size="120" round={true} />
                     </div>
                   <div className='ml-16 w-[150px] mt-3'>
                     <h1 className='text-white font-bold'>{user?.name}</h1>

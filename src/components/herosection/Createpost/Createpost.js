@@ -8,7 +8,7 @@ import { getAllTweets } from '../../../redux/tweetSlice';
 
 function Createpost() {
     const [discription,setDiscription]= useState("");
-    const {user} =useSelector(store=>store.user);
+    const {user, profile} =useSelector(store=>store.user);
     const dispatch=useDispatch();
     const {isActive}= useSelector(store=>store.tweet)
 
@@ -37,7 +37,7 @@ function Createpost() {
     const followingHandler=()=>{
         dispatch(getIsActive(false));
     }
-    
+
 
   return (
     <>
@@ -54,7 +54,7 @@ function Createpost() {
                 <div >
                     <div className='flex'>
                     <div className='absolute mt-3 ml-5  rounded-full '>
-                        <img className='h-12 rounded-full' src="https://pbs.twimg.com/profile_images/1703261403237502976/W0SFbJVS_400x400.jpg" size="120" round={true} />
+                        <img className='h-12 w-12 rounded-full' src={profile?.image} size="120" round={true} />
                     </div>
                     <div className='ml-14'>
                     <div className='flex items-center p-4'>                    

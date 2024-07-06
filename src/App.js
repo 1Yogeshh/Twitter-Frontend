@@ -9,7 +9,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import Otherprofile from './components/Otherprofile/Otherprofile';
 import UpdateProfile from './components/Profile/updateprofile';
 
-
 function App() {
   const router = createBrowserRouter([
   

@@ -9,11 +9,13 @@ import { House } from 'lucide-react'
 import { ListCollapse } from 'lucide-react';
 import { Aperture } from 'lucide-react';
 import { LogOut } from 'lucide-react';
+import { useSelector } from 'react-redux'
 import { Twitter } from 'lucide-react';
 
 function Leftside() {
     const navigate=useNavigate()
     const dispatch=useDispatch()
+    const {user, profile, otherUsers}=useSelector(store=>store.user);
     const logoutHandler= async()=>{
         try {
             const res= await axios.get(`${USER_API_END_POINT}/api/logout`);
@@ -42,7 +44,7 @@ function Leftside() {
         </div>
         <div className='mt-10 flex hover:cursor-pointer'>
             <div className='absolute   rounded-full '>
-                <img className='h-8 rounded-full mr-2' src="https://pbs.twimg.com/profile_images/1703261403237502976/W0SFbJVS_400x400.jpg" size="120" round={true} />
+                <img className='h-8 w-8 rounded-full mr-2' src={profile?.image} size="120" round={true} />
             </div>
             <button className='ml-10 font-medium text-white' onClick={()=>navigate('/profile')}>profile</button>
         </div>

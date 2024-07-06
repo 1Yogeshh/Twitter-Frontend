@@ -8,7 +8,7 @@ import { Heart, Trash2 } from 'lucide-react'
 
 const Tweet=({tweet})=> {
     const dispatch=useDispatch();
-    const {user}= useSelector(store=>store.user)
+    const {user, profile}= useSelector(store=>store.user)
     const likeorDislikeHandler= async(id)=>{
         
         try {
@@ -43,7 +43,7 @@ const Tweet=({tweet})=> {
             <div>
                 <div className='flex gap-5 ml-4'>
                     <div className='absolute mt-5 ml-5   rounded-full '>
-                        <img className='h-10 rounded-full mr-2' src="https://pbs.twimg.com/profile_images/1703261403237502976/W0SFbJVS_400x400.jpg" size="120" round={true} />
+                        <img className='h-10 w-10 rounded-full mr-2' src={profile?.image} size="120" round={true} />
                     </div>
                     <div className='ml-1 mt-1'>
                     <h1 className='ml-16 mt-3 font-medium text-white'>{tweet?.userDetails[0]?.name}</h1>

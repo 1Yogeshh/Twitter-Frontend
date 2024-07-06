@@ -34,7 +34,7 @@ const Profile=()=> {
                 </div>
                 <img src="https://pbs.twimg.com/profile_banners/1581707412922200067/1693248932/1080x360" alt="banner" />
                 <div className='absolute top-52 ml-2 border-4 border-white rounded-full '>
-                    <img className='h-40 rounded-full' src="https://pbs.twimg.com/profile_images/1703261403237502976/W0SFbJVS_400x400.jpg" size="120" round={true} />
+                    <img className='h-40 w-40 rounded-full' src={profile?.image} size="120" round={true} />
                 </div>
                 <div className='text-right m-4'>
                 <button className='px-4 py-1 text-white hover:text-black hover:bg-gray-200 rounded border border-gray-400' onClick={()=>navigate('/update')}>Edit Profile</button>
