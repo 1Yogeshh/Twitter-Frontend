@@ -15,12 +15,12 @@ const Rightside=({otherUsers})=> {
                 <h1 className=' font-medium text-white mb-3'>Who to Follow</h1>
 
                 {
-                  otherUsers?.map((user)=>{
+                  otherUsers.map((user)=>{
                   return(
-                  <div className='border-2 border-gray-400 rounded mb-2 w-[350px] h-20'>
-                  <div className='flex' key={user?._id}>
+                  <div className='border-2 border-gray-400 rounded mb-2 w-[350px] h-20' key={user?._id}>
+                  <div className='flex'>
                   <div className='absolute mt-4 ml-5  rounded-full  '>
-                        <img className='h-10 w-10 rounded-full' src={user?.image} size="120" round={true} />
+                        <img className='h-10 w-10 rounded-full' src={user?.image} size="120"  />
                     </div>
                   <div className='ml-16 w-[150px] mt-3'>
                     <h1 className='text-white font-bold'>{user?.name}</h1>

@@ -29,7 +29,6 @@ const Profile=()=> {
                     
                     <div className='ml-2'>
                         <h1 className='font-bold text-lg text-white'>{profile?.name}</h1>
-                        <p className='text-gray-500 text-sm '>10 post</p>
                     </div>
                 </div>
                 <img src="https://pbs.twimg.com/profile_banners/1581707412922200067/1693248932/1080x360" alt="banner" />
@@ -56,7 +55,7 @@ const Profile=()=> {
                 </div>
                 </div>
                 <div className='m-4 text-sm'>
-                    <p className='text-white'> {profile?.name} {profile?.bio}🌐 Exploring the web's endless possibilities with MERN Stack 🚀 | Problem solver by day, coder by night 🌙 | Coffee lover ☕ | Join me on this coding journey!</p>
+                    <p className='text-white font-medium'>Enter the Bio</p>
                 </div>
             </div>
         </div>

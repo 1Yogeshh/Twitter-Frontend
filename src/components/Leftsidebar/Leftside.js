@@ -44,7 +44,7 @@ function Leftside() {
         </div>
         <div className='mt-10 flex hover:cursor-pointer'>
             <div className='absolute   rounded-full '>
-                <img className='h-8 w-8 rounded-full mr-2' src={profile?.image} size="120" round={true} />
+                <img className='h-8 w-8 rounded-full mr-2' src={user?.image} size="120"  />
             </div>
             <button className='ml-10 font-medium text-white' onClick={()=>navigate('/profile')}>profile</button>
         </div>

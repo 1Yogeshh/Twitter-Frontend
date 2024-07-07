@@ -43,7 +43,7 @@ const Tweet=({tweet})=> {
             <div>
                 <div className='flex gap-5 ml-4'>
                     <div className='absolute mt-5 ml-5   rounded-full '>
-                        <img className='h-10 w-10 rounded-full mr-2' src={profile?.image} size="120" round={true} />
+                        <img className='h-10 w-10 rounded-full mr-2' src={tweet?.userDetails[0]?.image} size="120"  />
                     </div>
                     <div className='ml-1 mt-1'>
                     <h1 className='ml-16 mt-3 font-medium text-white'>{tweet?.userDetails[0]?.name}</h1>

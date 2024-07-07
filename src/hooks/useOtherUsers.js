@@ -12,7 +12,6 @@ const useOtherUsers = (id) => {
                 const res = await axios.get(`${USER_API_END_POINT}/api/otheruser/${id}`, {
                     withCredentials:true
                 });
-                console.log(res);
                 dispatch(getOtherUsers(res.data.otherUsers));
             } catch (error) {
                 console.log(error);

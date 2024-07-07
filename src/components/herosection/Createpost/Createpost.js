@@ -51,17 +51,17 @@ function Createpost() {
                         <h1 className='font-semibold text-white text-lg'>Following</h1>
                     </div>
                 </div>
-                <div >
+                <div  className='mt-2 h-40'>
                     <div className='flex'>
                     <div className='absolute mt-3 ml-5  rounded-full '>
-                        <img className='h-12 w-12 rounded-full' src={profile?.image} size="120" round={true} />
+                        <img className='h-12 w-12 rounded-full' src={user?.image} size="120" />
                     </div>
                     <div className='ml-14'>
                     <div className='flex items-center p-4'>                    
                         <input value={discription} onChange={(e)=>setDiscription(e.target.value)} className='bg-black text-white w-full outline-none border-none ml-2 font-medium' type="text" placeholder='What is happening?!' />
                     </div>
                     <div className='flex items-center justify-between p-4 '>
-                        <button onClick={submitHandler} className='bg-blue-500 pl-5 pr-5 pt-1 pb-1 text-white rounded font-bold ml-[540px]'>Post</button>    
+                        <button onClick={submitHandler} className='bg-blue-500 pl-5 pr-5 pt-1 pb-1 mt-10 text-white rounded font-bold ml-[540px]'>Post</button>    
                     </div>
                     </div>
                     </div>
