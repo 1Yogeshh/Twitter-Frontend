@@ -54,6 +54,11 @@ const Tweet=({tweet})=> {
                     <p className='text-white'>{tweet?.discription}</p>
                 </div>
 
+                {
+                    
+                    tweet?.img!=null? <div className='h-100 mt-2  w-100'><img className='ml-20 rounded h-100 mr-20 max-w-96 max-h-96 w-100' src= {tweet?.img}  /></div> : <div><img className='hidden'></img></div>
+                 }
+
                 <div className='flex gap-10 ml-20 mt-5 mb-3'>
                     <div className='flex gap-3'>
                         <div onClick={()=>likeorDislikeHandler(tweet?._id)} className='hover:cursor-pointer hover:text-red-500'><Heart color='Red'/></div>

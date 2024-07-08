@@ -33,7 +33,7 @@ const Rightside=({otherUsers})=> {
                 </div>
                 </div>
                   </div>
-                    )
+                  )
                   })
                 }
                 

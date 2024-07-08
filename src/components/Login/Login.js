@@ -5,12 +5,15 @@ import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getUser } from '../../redux/userSlice';
-import { Twitter, Mail, Lock, FolderPen, User, Camera } from 'lucide-react';
+import { Twitter, Mail, Lock, Eye, FolderPen, User, Camera } from 'lucide-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 function Login() {
   const navigate=useNavigate();
 
     const [isLogin, setIsLogin] = useState(true);
+    const [showPassword, setShowPassword] = useState(false);
     const [name, setName]= useState("");
     const [username, setUsername]= useState("");
     const [email, setEmail]= useState("");
@@ -101,6 +104,10 @@ function Login() {
     const loginSignupHandler = () => {
         setIsLogin(!isLogin);
       }
+
+    const togglePasswordVisibility = () => {
+      setShowPassword(!showPassword);
+    };  
     
   return (
     <>
@@ -114,12 +121,12 @@ function Login() {
             <h1 className='font-bold text-5xl text-white'>Happening now.</h1>
           </div>
           <h1 className='mt-4 mb-2 text-2xl font-bold text-white'>{isLogin ? "Login" : "Singup"}</h1>
-          <form onSubmit={submitHandler}  className='flex flex-col w-[55%]'>
+          <form onSubmit={submitHandler}  className='flex flex-col'>
             {
               !isLogin && (<>
                 <p className='text-white font-medium flex mb-1'> <Camera color='gold' className='mr-1' />Profile Photo :</p>
                 <input onChange={imageChange} className='bg-white form-control w-26 h-10 pt-1 pl-1 font-medium rounded w-96' type="file" />
-                <p className='text-white font-medium mt-1 mb-1 flex'>  <User color='blue' className='mr-1' />Name :</p>
+                <p className='text-white font-medium mt-2 mb-1 flex'>  <User color='blue' className='mr-1' />Name :</p>
                 <input type="text" value={name} onChange={(e)=>setName(e.target.value)}  placeholder='Name' className=" outline-none  px-3 py-2 w-96 rounded-md my-1 font-semibold"/>
                 <p className='text-white font-medium mt-1 mb-1 flex'>  <FolderPen color='pink' className='mr-1' />Username :</p>
                 <input type="text" value={username} onChange={(e)=>setUsername(e.target.value)} placeholder='Username'  className='outline-none  px-3 py-2 w-96 rounded-md my-1 font-semibold' />
@@ -128,7 +135,15 @@ function Login() {
             <p className='text-white flex mb-1 font-medium mt-1'><Mail color='red' className='mr-1'/>Email :</p>
             <input type="email" value={email} onChange={(e)=>setEmail(e.target.value)}   placeholder='Email' className=" outline-none  px-3 py-2 w-96 rounded-md my-1 font-semibold" />
             <p className='text-white flex mb-1 font-medium mt-1'>  <Lock color='yellow' className='mr-1' />Password :</p>
-            <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder='Password' className="outline-none px-3 w-96 py-2 rounded-md my-1 font-semibold" />
+            <div className='flex'>
+            <input type={showPassword ? 'text' : 'password'} value={password} onChange={(e)=>setPassword(e.target.value)} placeholder='Password' className="outline-none px-3 w-96 py-2 rounded-md my-1 font-semibold" />
+            <FontAwesomeIcon
+                icon={showPassword ? faEyeSlash : faEye}
+                onClick={togglePasswordVisibility}
+                style={{ cursor: 'pointer', marginLeft: '-30px' }}
+                className='mt-4 h-5'
+            />
+            </div>
             <button className={`btn w-100 mt-5 my-3 w-96 bg-blue-500 h-10 text-white font-medium rounded ${imageLoad? 'btn-secondary' : 'btn-info'}`}>{isLogin ? "Login" : "Create Account"}</button>
             <h1 className='text-white'>{isLogin ? "Do not have an account?" : "Already have an account?"} <span onClick={loginSignupHandler} className='font-bold text-blue-600 cursor-pointer'>{isLogin ? "Signup" : "Login"}</span></h1>
           </form>
