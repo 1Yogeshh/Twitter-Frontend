@@ -15,7 +15,7 @@ const Rightside=({otherUsers})=> {
                 <h1 className=' font-medium text-white mb-3'>Who to Follow</h1>
 
                 {
-                  otherUsers.map((user)=>{
+                  otherUsers && otherUsers.map((user)=>{
                   return(
                   <div className='border-2 border-gray-400 rounded mb-2 w-[350px] h-20' key={user?._id}>
                   <div className='flex'>
