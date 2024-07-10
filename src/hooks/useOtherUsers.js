@@ -8,13 +8,9 @@ const useOtherUsers = (id) => {
     const dispatch = useDispatch();
     useEffect(()=>{
         const fetchOtherUsers = async () => {
-            const token = localStorage.getItem('token');
             try {
                 const res = await axios.get(`${USER_API_END_POINT}/api/otheruser/${id}`, {
-                    withCredentials:true,
-                    headers:{
-                         Authorization: `Bearer ${token}`
-                    }
+                    withCredentials:true
                 });
                 dispatch(getOtherUsers(res.data.otherUsers));
             } catch (error) {
