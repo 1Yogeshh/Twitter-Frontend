@@ -68,9 +68,9 @@ const Otherprofile=()=> {
                         <p className='text-gray-500 text-sm'>10 post</p>
                     </div>
                 </div>
-                <img src="https://pbs.twimg.com/profile_banners/1581707412922200067/1693248932/1080x360" alt="banner" />
-                <div className='absolute top-52 ml-4 mt-16 border-4 border-white rounded-full '>
-                    <img className='h-40 w-40 rounded-full' src={profile?.image} size="120" round={true} />
+                <img src={profile?.bgimage} className='h-[350px] w-[1000px]' alt="banner" />
+                <div className='absolute top-52 ml-5 mt-32 border-4 border-white rounded-full '>
+                    <img className='h-40 w-40 rounded-full' src={profile?.image} size="120"  />
                 </div>
                 <div className='text-right m-4'>
                 <button onClick={followAndUnfollowHandler} className='px-4 py-1 hover:bg-gray-100 rounded-full border border-gray-400 bg-black text-white hover:text-black'>{user?.following.includes(id)?"Following":"Follow"}</button>
@@ -93,7 +93,7 @@ const Otherprofile=()=> {
                 </div>
                 </div>
                 <div className='m-4 text-sm text-white'>
-                    <p> {profile?.name}🌐{profile?.bio} Exploring the web's endless possibilities with MERN Stack 🚀 | Problem solver by day, coder by night 🌙 | Coffee lover ☕ | Join me on this coding journey!</p>
+                    <p>🌐{profile?.bio}</p>
                 </div>
             </div>
         </div>

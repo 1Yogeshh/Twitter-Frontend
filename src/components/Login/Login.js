@@ -59,6 +59,7 @@ function Login() {
             withCredentials:true
           });
           dispatch(getUser(response?.data?.user));
+          localStorage.setItem('token', response.data.token);
         if(response.data.success){
           navigate("/");
           toast.success(response.data.message);

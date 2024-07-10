@@ -23,7 +23,7 @@ const Profile=()=> {
     <div className='flex justify-between bg-black h-screen'>
       <Leftside/>
       <div>
-      <div className='w-[68%] border-r-2 border-gray-400 pr-3  ml-[360px] h-screen'>
+      <div className='w-[68%] border-r-2 border-gray-400 pr-2 pl-2  ml-[360px] h-screen'>
             <div>
                 <div className='flex items-center py-2'>
                     
@@ -31,9 +31,14 @@ const Profile=()=> {
                         <h1 className='font-bold text-lg text-white'>{profile?.name}</h1>
                     </div>
                 </div>
-                <img src="https://pbs.twimg.com/profile_banners/1581707412922200067/1693248932/1080x360" alt="banner" />
-                <div className='absolute top-52 ml-2 border-4 border-white rounded-full '>
-                    <img className='h-40 w-40 rounded-full' src={profile?.image} size="120" round={true} />
+                <div className='h-[300px] w-[700px]'>
+                {
+                  profile?.bgimage!=null? <img className='h-[300px] w-[700px]' src={profile?.bgimage} alt="banner" />:<img></img>
+                
+                }
+                </div>
+                <div className='absolute top-52 ml-2 border-4 border-white rounded-full mt-10 '>
+                    <img className='h-40 w-40 rounded-full' src={profile?.image} size="120" />
                 </div>
                 <div className='text-right m-4'>
                 <button className='px-4 py-1 text-white hover:text-black hover:bg-gray-200 rounded border border-gray-400' onClick={()=>navigate('/update')}>Edit Profile</button>
@@ -55,7 +60,7 @@ const Profile=()=> {
                 </div>
                 </div>
                 <div className='m-4 text-sm'>
-                    <p className='text-white font-medium'>Enter the Bio</p>
+                    <p className='text-white font-medium'>{profile?.bio}</p>
                 </div>
             </div>
         </div>
