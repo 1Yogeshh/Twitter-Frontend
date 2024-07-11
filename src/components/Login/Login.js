@@ -58,9 +58,11 @@ function Login() {
             },
             withCredentials:true
           });
-          dispatch(getUser(response?.data?.user));
+          
         if(response.data.success){
           document.cookie = `token=${response.data.token}; path=/; Secure`;
+
+          dispatch(getUser(response?.data?.user));
           navigate("/");
           toast.success(response.data.message);
         }
