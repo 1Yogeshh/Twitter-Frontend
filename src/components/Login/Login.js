@@ -58,6 +58,7 @@ function Login() {
             },
             withCredentials:true
           });
+            localStorage.setItem('authToken', res.data.token); 
           dispatch(getUser(response?.data?.user));
         if(response.data.success){
           navigate("/");
