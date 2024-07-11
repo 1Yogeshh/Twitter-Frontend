@@ -62,7 +62,7 @@ function Login() {
         if(response.data.success){
           document.cookie = `token=${response.data.token}; path=/; Secure`;
 
-          dispatch(getUser(response?.data?.user));
+          dispatch(getUser(response.data.user));
           navigate("/");
           toast.success(response.data.message);
         }
