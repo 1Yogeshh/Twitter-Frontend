@@ -11,6 +11,8 @@ const useGetAllTweet =  (id) => {
 
     const fetchAllTweets = async () => {
         try {
+            const token = document.cookie.split('=')[1];
+            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
             const res= await axios.get(`${USER_API_END_POINT}/tweet/alltweet/${id}`, {
                 
                 withCredentials:true
@@ -23,6 +25,8 @@ const useGetAllTweet =  (id) => {
 
     const followingTweetHandler=async()=>{
         try {
+            const token = document.cookie.split('=')[1];
+            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
             axios.defaults.withCredentials=true;
             const res = await axios.get(`${USER_API_END_POINT}/tweet/followingtweet/${id}`);
             
