@@ -9,8 +9,6 @@ const useOtherUsers = (id) => {
     useEffect(()=>{
         const fetchOtherUsers = async () => {
             try {
-                const token = document.cookie.split('=')[1];
-                axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
                 const res = await axios.get(`${USER_API_END_POINT}/api/otheruser/${id}`, {
                     withCredentials:true
                 });
