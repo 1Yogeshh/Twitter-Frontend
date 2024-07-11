@@ -12,6 +12,7 @@ const useGetAllTweet =  (id) => {
     const fetchAllTweets = async () => {
         try {
             const res= await axios.get(`${USER_API_END_POINT}/tweet/alltweet/${id}`, {
+                
                 withCredentials:true
             });
             dispatch(getAllTweets(res.data.tweets));
@@ -32,13 +33,17 @@ const useGetAllTweet =  (id) => {
     }
 
 
-    useEffect(()=>{
-        if(isActive){
-            fetchAllTweets() ;
-        }else{
-            followingTweetHandler();
-        }
-    },[isActive, refresh]);
+      useEffect(() => {
+    const fetchData = async () => {
+      if (isActive) {
+        await fetchAllTweets();
+      } else {
+        await followingTweetHandler();
+      }
+    };
+
+    fetchData();
+  }, [isActive, refresh, id]);
     
 
 };
