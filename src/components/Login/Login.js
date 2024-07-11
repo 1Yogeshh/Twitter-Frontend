@@ -59,10 +59,9 @@ function Login() {
             withCredentials:true
           });
           
-          
-        if(response.data.success){
-           document.cookie = `token=${response.data.token}; path=/; Secure; SameSite=None`;
           dispatch(getUser(response.data.user));
+        if(response.data.success){
+          
           navigate("/");
           toast.success(response.data.message);
         }
