@@ -60,7 +60,7 @@ function Login() {
           });
           
         if(response.data.success){
-          document.cookie = `token=${response.data.token}; path=/; Secure`;
+           document.cookie = `token=${response.data.token}; path=/; Secure; SameSite=None`;
 
           dispatch(getUser(response.data.user));
           navigate("/");
