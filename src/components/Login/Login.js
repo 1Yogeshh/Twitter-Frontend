@@ -59,10 +59,11 @@ function Login() {
             },
             withCredentials:true
           });
-          setToken(response.data.token);
+          
           
         if(response.data.success){
            document.cookie = `token=${response.data.token}; path=/; Secure; SameSite=None`;
+          setToken(response.data.token);
 
           dispatch(getUser(response.data.user));
           navigate("/");
