@@ -11,12 +11,8 @@ const useGetAllTweet =  (id) => {
 
     const fetchAllTweets = async () => {
         try {
-            const token = localStorage.getItem('authToken'); 
             const res= await axios.get(`${USER_API_END_POINT}/tweet/alltweet/${id}`, {
-                withCredentials:true,
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+                withCredentials:true
             });
             dispatch(getAllTweets(res.data.tweets));
         } catch (error) {
@@ -26,13 +22,8 @@ const useGetAllTweet =  (id) => {
 
     const followingTweetHandler=async()=>{
         try {
-             const token = localStorage.getItem('authToken'); 
             axios.defaults.withCredentials=true;
-            const res = await axios.get(`${USER_API_END_POINT}/tweet/followingtweet/${id}`,{
-                headers: {
-          Authorization: `Bearer ${token}`,
-        },
-            });
+            const res = await axios.get(`${USER_API_END_POINT}/tweet/followingtweet/${id}`);
             
             dispatch(getAllTweets(res.data.tweets));
         } catch (error) {
