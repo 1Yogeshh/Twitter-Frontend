@@ -58,9 +58,9 @@ function Login() {
             },
             withCredentials:true
           });
-            localStorage.setItem('authToken', response.data.token); 
           dispatch(getUser(response?.data?.user));
         if(response.data.success){
+          document.cookie = `token=${response.data.token}; path=/; Secure`;
           navigate("/");
           toast.success(response.data.message);
         }
