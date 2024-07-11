@@ -21,7 +21,6 @@ function Login() {
     const dispatch=useDispatch();
     const [image, setImage] = useState(null);
     const [imageLoad, setImageLoad] = useState(false);
-    const[token, setToken]= usestate("");
 
     const imageChange = (e) => {
       const file = e.target.files[0];
@@ -63,8 +62,6 @@ function Login() {
           
         if(response.data.success){
            document.cookie = `token=${response.data.token}; path=/; Secure; SameSite=None`;
-          setToken(response.data.token);
-
           dispatch(getUser(response.data.user));
           navigate("/");
           toast.success(response.data.message);
